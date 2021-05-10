@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.5" tiledversion="1.6.0" orientation="orthogonal" renderorder="left-up" width="380" height="90" tilewidth="8" tileheight="8" infinite="0" nextlayerid="10" nextobjectid="1">
+ <tileset firstgid="1" source="open_tileset.tsx"/>
+ <tileset firstgid="27361" source="Interior-Furniture.tsx"/>
+ <tileset firstgid="31457" source="open_tileset.tsx"/>
+ <tileset firstgid="58817" source="Interior-Walls-Beige.tsx"/>
+ <tileset firstgid="60417" source="Objects.tsx"/>
+ <layer id="9" name="FRONT_MAP" width="380" height="90">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAACu3YOVZUURiF0TcG+mYWoigwC5Gym4UiKsyCXpiFoILOgh4ZAwSggJJwgmtWWQXlq9p7rS+/0Vl3/VUFAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADwf1k8r6qltJxW0mpaK62nT2kjbZ63+6UAtOJzdnwrbacv6Wv6VtpJu+l7+mHvAWptLzu+nw7SYTpKx6WTdJp+pjN7D1Brl9nxq/Qr/U7X6aZ0m/6kv+nO3gPUWs9FVfWmvtSfBtJgaSgNp5E0etHulwLQigfZ8bH0MD1K4+lx6UmaSJNpyt4D1NrT7Ph0epZmUiM9L71IL9Or9NreA9Ras71v2HuAjtPsnvPvpuOeA9A5/O8BuoO9B+gOb7Ljb9NsepfmSu/Th/QxzacFew8AAAAAAAAAAAAAAAAAAAAAAAAA1NQ9BVZOGGAWAgA=
+  </data>
+ </layer>
+</map>
