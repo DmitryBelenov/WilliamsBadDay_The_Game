@@ -46,7 +46,7 @@ public class Character {
             }
         }
 
-        // init MOVE layer (zero points to go)
+        // init MOVE layer (only zero points to go)
         int moveIdx = level.getLayerIndex(Layer.MOVE.name());
         level.getTileId(0,0, moveIdx);
 

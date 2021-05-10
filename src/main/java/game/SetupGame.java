@@ -17,7 +17,7 @@ public class SetupGame extends StateBasedGame {
         init();
 
 //        this.addState(new IntState(0, "William's Bad Day", "Press ENTER", Input.KEY_ENTER, 1));
-        this.addState(new BaseState(1, "tiles/level/LEVEL_1.tmx", "tiles/level/LEVEL_1_FRONT.tmx", "sounds/level/space-ambience.wav", new XYPos(20, 390)));
+        this.addState(new BaseState(1, "tiles/level/LEVEL_1.tmx", "tiles/level/LEVEL_1_FRONT.tmx", "sounds/level/space-ambience.wav", new XYPos(115, 390)));
     }
 
     private static void init() throws SlickException {
