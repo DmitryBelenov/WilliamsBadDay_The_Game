@@ -11,8 +11,10 @@ import org.newdawn.slick.state.StateBasedGame;
 import character.Character;
 import org.newdawn.slick.tiled.TiledMap;
 import params.GameParams;
+import state.objects.LevelObject;
+import state.objects.LevelObjectsHolder;
 
-public abstract class Level extends BasicGameState {
+public class Level extends BasicGameState {
 
     /**
      * Unique level ID
@@ -59,12 +61,21 @@ public abstract class Level extends BasicGameState {
      * */
     private final String backMusicURI;
 
+    /**
+     * All level objects to interaction
+     * Base game plot movers
+     * */
+    private final LevelObjectsHolder lvlObjects;
+
     public Level(final int id, final String tmxURI, final String frontURI, final String backMusicURI, final XYPos playerStartPos) throws SlickException {
         this.id = id;
         this.tmxURI = tmxURI;
         this.frontURI = frontURI;
         this.backMusicURI = backMusicURI;
         this.playerStartPos = playerStartPos;
+        lvlObjects = LevelObjectsHolder.read(id + ".lo");
+        if (lvlObjects.getObjects() == null)
+            throw new SlickException("No object init for level " + id);
     }
 
     @Override
@@ -97,6 +108,9 @@ public abstract class Level extends BasicGameState {
             graphics.setColor(Color.transparent);
         }
         graphics.fill(coBlk);
+
+        lvlObjects.getObjects().forEach(lo -> lo.renderObject(graphics));
+        // player rendering after level objects
         player.render();
 
         // front map objects rendering at front
@@ -108,5 +122,9 @@ public abstract class Level extends BasicGameState {
     @Override
     public void update(GameContainer gameContainer, StateBasedGame stateBasedGame, int i) throws SlickException {
         player.update(gameContainer, map, coBlk);
+
+        for (LevelObject lo : lvlObjects.getObjects()) {
+            lo.updateObject(gameContainer, stateBasedGame, coBlk, player);
+        }
     }
 }

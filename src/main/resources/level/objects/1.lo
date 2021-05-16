@@ -1,0 +1,8 @@
+lvlCode:home
+-- Level objects. Key value order matters
+lo:nm=bird1;posX=376;posY=72;animDur=210;anim=brdPgnSit8
+lo:nm=bird2;posX=400;posY=64;animDur=270;anim=brdPgnSit8
+lo:nm=bird3;posX=464;posY=80;animDur=310;anim=brdPgnSit8
+lo:nm=corgi;posX=1176;posY=488;animDur=190;anim=corgi24
+lo:nm=fireplaceHome;posX=268;posY=412;animDur=180;anim=firePlHome12
+lo:nm=exitToLvL2;posX=2976;posY=280;collShW=96;collShH=320;goToID=2;reEnt=right;plStCode=start;defTxt=You cant go to next level
