@@ -17,14 +17,16 @@ public class Frames {
     static {
         try {
             /* Player sprites */
-            RIGHT_WALK = new Image[]{new Image("character/right/1.png"),
-                    new Image("character/right/2.png"),
-                    new Image("character/right/3.png"),
-                    new Image("character/right/4.png"),
-                    new Image("character/right/5.png"),
-                    new Image("character/right/6.png"),
-                    new Image("character/right/7.png"),
-                    new Image("character/right/8.png")};
+            RIGHT_WALK = new Image[]{
+//                    new Image("character/right/1.png"),
+                    new Image("character/right1/2.png"),
+                    new Image("character/right1/3.png"),
+                    new Image("character/right1/4.png"),
+                    new Image("character/right1/5.png"),
+                    new Image("character/right1/6.png"),
+                    new Image("character/right1/7.png"),
+                    new Image("character/right1/8.png"),
+                    new Image("character/right1/9.png")};
 
             LEFT_WALK = new Image[]{new Image("character/left/1.png"),
                     new Image("character/left/2.png"),
@@ -35,7 +37,7 @@ public class Frames {
                     new Image("character/left/7.png"),
                     new Image("character/left/8.png")};
 
-            RIGHT_STAY = new Image[]{new Image("character/right/stay/1.png")};
+            RIGHT_STAY = new Image[]{new Image("character/right1/stay/1.png")};
 
             LEFT_STAY = new Image[]{new Image("character/left/stay/1.png")};
 

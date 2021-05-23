@@ -72,6 +72,7 @@ public class IntState extends BasicGameState {
         if (lft_up != null) {
 
         }
+        graphics.setColor(Color.transparent);
     }
 
     @Override

@@ -1,36 +1,59 @@
 package state.objects.logic;
 
+import game.screen.ScreenUtils;
+import org.newdawn.slick.GameContainer;
+import org.newdawn.slick.Input;
+import plot.Plot;
+
 import java.util.List;
 
 public class BasePlotTrigger {
 
     private String plotStartCode;
     private List<SingleObjActionStep> objActionSteps;
-    private SingleObjActionStep curStep;
-    private String noActTxt; // default plot text
+    private int curStepIdx;
+    private boolean generalPlotShifted;
 
     public BasePlotTrigger(String plotStartCode) {
-        this(plotStartCode, null, null);
+        this(plotStartCode, null);
     }
 
-    public BasePlotTrigger(String plotStartCode, List<SingleObjActionStep> objActionSteps, SingleObjActionStep curStep) {
+    public BasePlotTrigger(String plotStartCode, List<SingleObjActionStep> objActionSteps) {
         this.plotStartCode = plotStartCode;
-        this.objActionSteps = objActionSteps;
-        this.curStep = curStep;
+        setObjActionSteps(objActionSteps);
     }
 
-    public boolean check() {
-        if (!plotStartCode.equals("start")) {
-            // show default plot text (no plot move)
+    public boolean shift(GameContainer gc) {
+        if (!plotStartCode.equals(Plot.curCode())) {
             return false;
         }
-        return true;
+
+        boolean isNextStep = false;
+        if (gc.getInput().isKeyPressed(Input.KEY_E)) {
+            isNextStep = nextStep();
+        }
+
+        return isNextStep;
     }
 
-    private void nextStep() {
+    private boolean nextStep() {
+        if (objActionSteps == null || generalPlotShifted) {
+            return true;
+        }
+
+        if (ScreenUtils.isShown(curStepIdx)) {
+            curStepIdx++;
+            if (curStepIdx == objActionSteps.size() - 1) {
+                movePlot();
+                generalPlotShifted = true;
+            }
+        }
+
+        return generalPlotShifted;
     }
 
-    private void move() {
+    private void movePlot() {
+        Plot.shiftFw();
     }
 
     public String getPlotStartCode() {
@@ -47,20 +70,13 @@ public class BasePlotTrigger {
 
     public void setObjActionSteps(List<SingleObjActionStep> objActionSteps) {
         this.objActionSteps = objActionSteps;
-        if (this.objActionSteps != null && this.objActionSteps.size() > 0) {
-            setCurStep(this.objActionSteps.get(0)); // set current step as first
-        }
     }
 
-    public SingleObjActionStep getCurStep() {
-        return curStep;
+    public int getCurStepIdx() {
+        return curStepIdx;
     }
 
-    public void setCurStep(SingleObjActionStep curStep) {
-        this.curStep = curStep;
-    }
-
-    public void setNoActTxt(String noActTxt) {
-        this.noActTxt = noActTxt;
+    private void setCurStepIdx(int stepIdx) {
+        this.curStepIdx = stepIdx;
     }
 }

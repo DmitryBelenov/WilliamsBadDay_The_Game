@@ -6,6 +6,7 @@ import org.newdawn.slick.Animation;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.geom.Rectangle;
 import state.objects.logic.BasePlotTrigger;
+import state.objects.logic.SingleObjActionStep;
 
 import java.io.BufferedReader;
 import java.io.InputStream;
@@ -31,7 +32,7 @@ public class LevelObjectsHolder {
    }
 
    private enum LinePairKey {
-      nm, posX, posY, anim, animDur, collShW, collShH, plStCode, goToID, defTxt, reEnt
+      nm, posX, posY, anim, animDur, collShW, collShH, plStCode, goToID, reEnt, act
    }
 
    public static LevelObjectsHolder read(final String lvObjDescriptorFile) throws SlickException {
@@ -102,12 +103,16 @@ public class LevelObjectsHolder {
             goToLvVId = Integer.parseInt(val);
          } else if (LinePairKey.valueOf(key) == LinePairKey.plStCode) {
             objPlotTrigger = new BasePlotTrigger(val);
-         } else if (LinePairKey.valueOf(key) == LinePairKey.defTxt) {
-            if (objPlotTrigger != null) {
-               objPlotTrigger.setNoActTxt(val);
-            }
          } else if (LinePairKey.valueOf(key) == LinePairKey.reEnt) {
             isRightReentrant = val.equals("right") || val.equals("center");
+         } else if (LinePairKey.valueOf(key) == LinePairKey.act) {
+            if (objPlotTrigger != null) {
+               final List<SingleObjActionStep> actList = LevelObject.parseActionSteps(val);
+               if (actList == null) {
+                  throw new SlickException("Unable to parse action steps");
+               }
+               objPlotTrigger.setObjActionSteps(actList);
+            } else throw new SlickException("Obj actions without plain start code detected");
          }
       }
 

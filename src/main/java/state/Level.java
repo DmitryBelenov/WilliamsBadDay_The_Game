@@ -104,12 +104,13 @@ public class Level extends BasicGameState {
         // order matters
         camera.translate(graphics, player);
         map.render(0,0);
-        if (!GameParams.IS_DEBUG_MODE) {
-            graphics.setColor(Color.transparent);
+        if (GameParams.IS_DEBUG_MODE) {
+            graphics.setColor(Color.white);
         }
         graphics.fill(coBlk);
 
-        lvlObjects.getObjects().forEach(lo -> lo.renderObject(graphics));
+        lvlObjects.getObjects().forEach(lo -> lo.renderObject(graphics, coBlk, gameContainer, camera));
+
         // player rendering after level objects
         player.render();
 
@@ -125,6 +126,11 @@ public class Level extends BasicGameState {
 
         for (LevelObject lo : lvlObjects.getObjects()) {
             lo.updateObject(gameContainer, stateBasedGame, coBlk, player);
+        }
+
+        // exit to main menu
+        if (gameContainer.getInput().isKeyPressed(Input.KEY_ESCAPE)) {
+            System.exit(0);
         }
     }
 }
