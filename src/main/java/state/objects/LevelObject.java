@@ -10,11 +10,13 @@ import org.newdawn.slick.geom.Rectangle;
 import org.newdawn.slick.state.StateBasedGame;
 import org.newdawn.slick.state.transition.FadeInTransition;
 import org.newdawn.slick.state.transition.FadeOutTransition;
+import plot.QuestMenu;
 import state.objects.logic.BasePlotTrigger;
 import state.objects.logic.SingleObjActionStep;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 public class LevelObject {
 
@@ -61,6 +63,7 @@ public class LevelObject {
                     ScreenUtils.showStart();
                     TextViewer.setShowing();
                     ScreenUtils.setShowDuration(idx);
+                    QuestMenu.set(objName.toUpperCase(Locale.ROOT) + ": " + cur.getText());
                 }
             }
         }

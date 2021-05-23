@@ -1,0 +1,12 @@
+Sun May 23 20:49:15 MSK 2021 ERROR:Unable to determine Slick build number
+Sun May 23 20:49:15 MSK 2021 INFO:LWJGL Version: 2.9.3
+Sun May 23 20:49:15 MSK 2021 INFO:OriginalDisplayMode: 1920 x 1080 x 32 @144Hz
+Sun May 23 20:49:15 MSK 2021 INFO:TargetDisplayMode: 1280 x 720 x 0 @0Hz
+Sun May 23 20:49:16 MSK 2021 INFO:Starting display 1280x720
+Sun May 23 20:49:16 MSK 2021 INFO:Use Java PNG Loader = true
+Sun May 23 20:49:16 MSK 2021 INFO:Found 1 controllers
+Sun May 23 20:49:16 MSK 2021 INFO:0 : USB DEVICE
+Sun May 23 20:49:16 MSK 2021 INFO:Initialising sounds..
+Sun May 23 20:49:17 MSK 2021 INFO:- Sound works
+Sun May 23 20:49:17 MSK 2021 INFO:- 64 OpenAL source available
+Sun May 23 20:49:17 MSK 2021 INFO:- Sounds source generated

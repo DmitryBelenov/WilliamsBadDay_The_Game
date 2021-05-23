@@ -4,6 +4,8 @@ import camera.Camera;
 import character.Frames;
 import character.XYPos;
 import game.MainGame;
+import game.screen.ScreenUtils;
+import game.screen.TextViewer;
 import org.newdawn.slick.*;
 import org.newdawn.slick.geom.Rectangle;
 import org.newdawn.slick.state.BasicGameState;
@@ -11,6 +13,7 @@ import org.newdawn.slick.state.StateBasedGame;
 import character.Character;
 import org.newdawn.slick.tiled.TiledMap;
 import params.GameParams;
+import plot.QuestMenu;
 import state.objects.LevelObject;
 import state.objects.LevelObjectsHolder;
 
@@ -117,6 +120,14 @@ public class Level extends BasicGameState {
         // front map objects rendering at front
         if (frontMap != null) {
             frontMap.render(0,0);
+        }
+
+        if (gameContainer.getInput().isKeyDown(Input.KEY_Q)) {
+            if (!TextViewer.isShowing()) {
+                TextViewer.setShowing();
+                ScreenUtils.showTxt(QuestMenu.last(), graphics, camera);
+                TextViewer.setShown();
+            }
         }
     }
 
