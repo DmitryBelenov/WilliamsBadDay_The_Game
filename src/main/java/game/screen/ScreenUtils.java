@@ -16,19 +16,28 @@ public class ScreenUtils {
 
     public static int shownIdx = -1;
 
-    public static void showTxt(String txt, Graphics gr, Camera camera, int idx) {
-        showStart();
+    public static void showTxt(String txt, Graphics gr, Camera camera) {
         float x = camera.getViewPort().getX() + 20;
         float y = camera.getViewPort().getY() + (MainGame.HEIGHT - 80);
         Rectangle txtArea = new Rectangle(x, y, MainGame.WIDTH - 40, 50);
-//        long waitFor = System.currentTimeMillis() + 3000;
-//        while (System.currentTimeMillis() < waitFor) {
         gr.setColor(Color.black);
         gr.fill(txtArea);
         gr.setColor(Color.white);
         gr.drawString(txt, x + 10, y + 10);
         gr.setColor(Color.transparent);
-        setShown(idx);
+    }
+
+    public static void setShowDuration(int idx) {
+        final Thread showTh = new Thread(() -> {
+            long showTo = System.currentTimeMillis() + TextViewer.SHOW_TXT_DUR;
+            boolean showing = true;
+            while (showing) {
+                showing = System.currentTimeMillis() < showTo;
+            }
+            TextViewer.setShown();
+            ScreenUtils.setShown(idx);
+        });
+        showTh.start();
     }
 
     public static boolean isShown(final int idx) {

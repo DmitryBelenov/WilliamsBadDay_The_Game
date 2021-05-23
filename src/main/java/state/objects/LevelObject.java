@@ -1,15 +1,16 @@
 package state.objects;
 
 import camera.Camera;
+import character.Character;
 import character.XYPos;
 import game.screen.ScreenUtils;
+import game.screen.TextViewer;
 import org.newdawn.slick.*;
 import org.newdawn.slick.geom.Rectangle;
 import org.newdawn.slick.state.StateBasedGame;
 import org.newdawn.slick.state.transition.FadeInTransition;
 import org.newdawn.slick.state.transition.FadeOutTransition;
 import state.objects.logic.BasePlotTrigger;
-import character.Character;
 import state.objects.logic.SingleObjActionStep;
 
 import java.util.ArrayList;
@@ -39,21 +40,34 @@ public class LevelObject {
         if (objAnimation != null) {
             objAnimation.draw(position.getX(), position.getY());
         }
+
+        List<SingleObjActionStep> aSList;
+        SingleObjActionStep cur = null;
+
+        int idx = -1;
+        BasePlotTrigger bt = getObjPlotTrigger();
+        if (bt != null) {
+            aSList = bt.getObjActionSteps();
+            idx = bt.getCurStepIdx();
+            if (aSList != null) {
+                cur = aSList.get(idx);
+            }
+        }
+
         if (objCollShape != null) {
             graphics.fill(objCollShape);
-
-            if (chCoBl.intersects(objCollShape)) {
-                BasePlotTrigger bt = getObjPlotTrigger();
-                if (bt != null) {
-                    List<SingleObjActionStep> aSList = bt.getObjActionSteps();
-                    int idx = bt.getCurStepIdx();
-                    if (aSList != null) {
-                        SingleObjActionStep cur = aSList.get(idx);
-                        if (gc.getInput().isKeyDown(Input.KEY_E)) {
-                            ScreenUtils.showTxt(cur.getText(), gc.getGraphics(), camera, idx);
-                        }
-                    }
+            if (chCoBl.intersects(objCollShape) && cur != null) {
+                if (gc.getInput().isKeyDown(Input.KEY_E) && !TextViewer.isShowing()) {
+                    ScreenUtils.showStart();
+                    TextViewer.setShowing();
+                    ScreenUtils.setShowDuration(idx);
                 }
+            }
+        }
+
+        if (cur != null) {
+            if (TextViewer.isShowing()) {
+                ScreenUtils.showTxt(cur.getText(), gc.getGraphics(), camera);
             }
         }
     }
