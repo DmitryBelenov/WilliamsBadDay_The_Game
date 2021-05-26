@@ -5,6 +5,7 @@ import org.newdawn.slick.Graphics;
 import org.newdawn.slick.geom.Rectangle;
 import org.newdawn.slick.tiled.TiledMap;
 import character.Character;
+import params.GameParams;
 
 public class Camera {
 
@@ -16,27 +17,27 @@ public class Camera {
     public Camera(TiledMap map) {
         x = 0;
         y = 0;
-        viewPort = new Rectangle(0, 0, MainGame.WIDTH, MainGame.HEIGHT);
+        viewPort = new Rectangle(0, 0, GameParams.WIDTH, GameParams.HEIGHT);
         this.mapWidth = map.getWidth() * map.getTileWidth();
         this.mapHeight = map.getHeight() * map.getTileHeight();
     }
 
     public void translate(Graphics g, Character character) {
 
-        if (character.getX() - MainGame.WIDTH / 2 + 16 < 0) {
+        if (character.getX() - GameParams.WIDTH / 2 + 16 < 0) {
             x = 0;
-        } else if (character.getX() + MainGame.WIDTH / 2.0 + 16 > mapWidth) {
-            x = - mapWidth + MainGame.WIDTH;
+        } else if (character.getX() + GameParams.WIDTH / 2.0 + 16 > mapWidth) {
+            x = - mapWidth + GameParams.WIDTH;
         } else {
-            x = - character.getX() + MainGame.WIDTH / 2 - 16;
+            x = - character.getX() + GameParams.WIDTH / 2 - 16;
         }
 
-        if (character.getY() - MainGame.HEIGHT / 2 + 16 < 0) {
+        if (character.getY() - GameParams.HEIGHT / 2 + 16 < 0) {
             y = 0;
-        } else if (character.getY() + MainGame.HEIGHT / 2.0 + 16 > mapHeight) {
-            y = - mapHeight + MainGame.HEIGHT;
+        } else if (character.getY() + GameParams.HEIGHT / 2.0 + 16 > mapHeight) {
+            y = - mapHeight + GameParams.HEIGHT;
         } else {
-            y = - character.getY() + MainGame.HEIGHT / 2 - 16;
+            y = - character.getY() + GameParams.HEIGHT / 2 - 16;
         }
         g.translate(x, y);
 

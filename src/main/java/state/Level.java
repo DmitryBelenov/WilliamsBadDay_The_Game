@@ -18,7 +18,6 @@ import state.objects.LevelObject;
 import state.objects.LevelObjectsHolder;
 
 public class Level extends BasicGameState {
-
     /**
      * Unique level ID
      * */
@@ -39,7 +38,6 @@ public class Level extends BasicGameState {
      * TMX front map object
      * */
     private TiledMap frontMap;
-
     /**
      * Character object
      * */
@@ -48,22 +46,22 @@ public class Level extends BasicGameState {
      * Player start position on level
      * */
     private final XYPos playerStartPos;
-
     /**
      * Main camera object
      * */
     private Camera camera;
-
     /**
      * Transparent player's collision block
      * */
     private Rectangle coBlk;
-
     /**
      * Level background music URI
      * */
     private final String backMusicURI;
-
+    /**
+     * Level background music obj
+     * */
+    private Music backMusic;
     /**
      * All level objects to interaction
      * Base game plot movers
@@ -94,9 +92,9 @@ public class Level extends BasicGameState {
             frontMap = new TiledMap(frontURI);
         }
         camera = new Camera(map);
-        coBlk = new Rectangle(playerStartPos.getX(), playerStartPos.getY(), MainGame.PL_WIDTH, MainGame.PL_HEIGHT);
+        coBlk = new Rectangle(playerStartPos.getX(), playerStartPos.getY(), GameParams.PL_WIDTH, GameParams.PL_HEIGHT);
         if (backMusicURI != null) {
-            final Music backMusic = new Music(backMusicURI);
+            backMusic = new Music(backMusicURI);
             backMusic.setVolume(0.5f);
             backMusic.loop();
         }
@@ -142,6 +140,20 @@ public class Level extends BasicGameState {
         // exit to main menu
         if (gameContainer.getInput().isKeyPressed(Input.KEY_ESCAPE)) {
             System.exit(0);
+        }
+    }
+
+    @Override
+    public void leave(GameContainer container, StateBasedGame game) throws SlickException {
+        super.leave(container, game);
+        backMusic.stop();
+    }
+
+    @Override
+    public void enter(GameContainer container, StateBasedGame game) throws SlickException {
+        super.enter(container, game);
+        if (!backMusic.playing()) {
+            backMusic.loop();
         }
     }
 }

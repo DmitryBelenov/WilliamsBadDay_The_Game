@@ -31,6 +31,16 @@ public class Character {
     public void update(GameContainer gc, TiledMap level, Rectangle coBlk) {
             Vector2f move = new Vector2f(0, 0);
             Input input = gc.getInput();
+            // when left and right keys pressed
+            if (input.isKeyDown(Input.KEY_LEFT) && input.isKeyDown(Input.KEY_RIGHT)) {
+                animation = new Animation(Frames.LEFT_STAY, DRT);
+                if (left) left = false;
+                if (right) right = false;
+                if (pl_steps.playing()) {
+                    pl_steps.stop();
+                }
+                return;
+            }
 
             // play animation
             if (input.isKeyDown(Input.KEY_LEFT)) {

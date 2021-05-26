@@ -5,6 +5,7 @@ import game.MainGame;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.geom.Rectangle;
+import params.GameParams;
 
 import java.util.concurrent.locks.ReentrantReadWriteLock;
 
@@ -18,8 +19,8 @@ public class ScreenUtils {
 
     public static void showTxt(String txt, Graphics gr, Camera camera) {
         float x = camera.getViewPort().getX() + 20;
-        float y = camera.getViewPort().getY() + (MainGame.HEIGHT - 80);
-        Rectangle txtArea = new Rectangle(x, y, MainGame.WIDTH - 40, 50);
+        float y = camera.getViewPort().getY() + (GameParams.HEIGHT - 80);
+        Rectangle txtArea = new Rectangle(x, y, GameParams.WIDTH - 40, 50);
         gr.setColor(Color.black);
         gr.fill(txtArea);
         gr.setColor(Color.white);

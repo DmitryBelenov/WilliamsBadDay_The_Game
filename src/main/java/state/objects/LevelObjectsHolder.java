@@ -5,6 +5,7 @@ import character.XYPos;
 import org.newdawn.slick.Animation;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.geom.Rectangle;
+import params.GameParams;
 import state.objects.logic.BasePlotTrigger;
 import state.objects.logic.SingleObjActionStep;
 
@@ -74,7 +75,7 @@ public class LevelObjectsHolder {
       Rectangle objCollShape = null;
       BasePlotTrigger objPlotTrigger = null;
 
-      int frameDur = 100; // default level object duration
+      int frameDur = GameParams.LVL_OBJ_DEF_DUR; // default level object duration
       float collShW = 0f;
       float collShH = 0f;
       int goToLvVId = -1;

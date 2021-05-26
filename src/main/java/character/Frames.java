@@ -18,15 +18,14 @@ public class Frames {
         try {
             /* Player sprites */
             RIGHT_WALK = new Image[]{
-//                    new Image("character/right/1.png"),
+                    new Image("character/right1/1.png"),
                     new Image("character/right1/2.png"),
                     new Image("character/right1/3.png"),
                     new Image("character/right1/4.png"),
                     new Image("character/right1/5.png"),
                     new Image("character/right1/6.png"),
                     new Image("character/right1/7.png"),
-                    new Image("character/right1/8.png"),
-                    new Image("character/right1/9.png")};
+                    new Image("character/right1/8.png")};
 
             LEFT_WALK = new Image[]{new Image("character/left/1.png"),
                     new Image("character/left/2.png"),

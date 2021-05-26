@@ -1,11 +1,11 @@
 package state;
 
-import game.MainGame;
 import org.newdawn.slick.*;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 import org.newdawn.slick.state.transition.FadeInTransition;
 import org.newdawn.slick.state.transition.FadeOutTransition;
+import params.GameParams;
 
 public class IntState extends BasicGameState {
 
@@ -58,10 +58,10 @@ public class IntState extends BasicGameState {
     public void render(GameContainer gameContainer, StateBasedGame stateBasedGame, Graphics graphics) throws SlickException {
         graphics.setColor(Color.white);
         if (cent != null) {
-            graphics.drawString(cent, (float) MainGame.WIDTH / 3, (float) MainGame.HEIGHT / 3);
+            graphics.drawString(cent, (float) GameParams.WIDTH / 3, (float) GameParams.HEIGHT / 3);
         }
         if (rgt_dwn != null) {
-            graphics.drawString(rgt_dwn, (float) MainGame.WIDTH - ((float) MainGame.WIDTH / 100 * 10), (float) MainGame.HEIGHT - ((float) MainGame.HEIGHT / 100 * 5));
+            graphics.drawString(rgt_dwn, (float) GameParams.WIDTH - ((float) GameParams.WIDTH / 100 * 10), (float) GameParams.HEIGHT - ((float) GameParams.HEIGHT / 100 * 5));
         }
         if (lft_dwn != null) {
 

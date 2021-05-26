@@ -1,47 +1,43 @@
 package state.objects.logic;
 
 public class SingleObjActionStep {
-    private String stepName;
-    private String text;
-    private String takeItemCode;
-    private String giveItemCode;
+    private final String stepName;
+    private final String text;
+    private final String takeItemCode;
+    private final int takeItemCount;
+    private final String giveItemCode;
+    private final int giveItemCount;
 
-    public SingleObjActionStep(String stepName, String text, String takeItemCode, String giveItemCode) {
+    public SingleObjActionStep(String stepName, String text, String takeItemCode, int takeItemCount, String giveItemCode, int giveItemCount) {
         this.stepName = stepName;
         this.text = text;
         this.takeItemCode = takeItemCode;
+        this.takeItemCount = takeItemCount;
         this.giveItemCode = giveItemCode;
+        this.giveItemCount = giveItemCount;
     }
 
     public String getStepName() {
         return stepName;
     }
 
-    public void setStepName(String stepName) {
-        this.stepName = stepName;
-    }
-
     public String getText() {
         return text;
-    }
-
-    public void setText(String text) {
-        this.text = text;
     }
 
     public String getTakeItemCode() {
         return takeItemCode;
     }
 
-    public void setTakeItemCode(String takeItemCode) {
-        this.takeItemCode = takeItemCode;
+    public int getTakeItemCount() {
+        return takeItemCount;
     }
 
     public String getGiveItemCode() {
         return giveItemCode;
     }
 
-    public void setGiveItemCode(String giveItemCode) {
-        this.giveItemCode = giveItemCode;
+    public int getGiveItemCount() {
+        return giveItemCount;
     }
 }

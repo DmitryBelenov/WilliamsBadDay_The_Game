@@ -20,7 +20,7 @@ public class SetupGame extends StateBasedGame {
         init();
 
         this.addState(new IntState(0, "William's Bad Day", "Press ENTER", Input.KEY_ENTER, 1));
-        this.addState(new BaseState(1, "tiles/level/LEVEL_1.tmx", "tiles/level/LEVEL_1_FRONT.tmx", "sounds/level/Countryside.wav", new XYPos(115, 390)));
+        this.addState(new BaseState(1, "tiles/level/LEVEL_1.tmx", "tiles/level/LEVEL_1_FRONT.tmx", "sounds/level/space-ambience.wav", new XYPos(115, 390))); //Countryside.wav
 
         this.addState(new IntState(2, "William's Bad Day NEXT Level", "Press ENTER", Input.KEY_ENTER, 1));
     }

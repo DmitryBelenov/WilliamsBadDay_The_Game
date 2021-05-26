@@ -108,7 +108,9 @@ public class LevelObject {
                     s[0],
                     s[1],
                     len > 2 ? s[2] : null,
-                    len > 3 ? s[3] : null));
+                    len > 3 ? Integer.parseInt(s[3]) : 0,
+                    len > 4 ? s[4] : null,
+                    len > 5 ? Integer.parseInt(s[5]) : 0));
         }
         return parsedList.size() == 0 ? null : parsedList;
     }
