@@ -1,19 +1,26 @@
 package state.objects.logic;
 
+import character.item.Item;
+import plot.ItemHolder;
+
 public class SingleObjActionStep {
     private final String stepName;
     private final String text;
-    private final String takeItemCode;
+    private Item takeItem;
     private final int takeItemCount;
-    private final String giveItemCode;
+    private Item giveItem;
     private final int giveItemCount;
 
     public SingleObjActionStep(String stepName, String text, String takeItemCode, int takeItemCount, String giveItemCode, int giveItemCount) {
         this.stepName = stepName;
         this.text = text;
-        this.takeItemCode = takeItemCode;
+        if (takeItemCode != null) {
+            this.takeItem = ItemHolder.get(takeItemCode);
+        }
         this.takeItemCount = takeItemCount;
-        this.giveItemCode = giveItemCode;
+        if (giveItemCode != null) {
+            this.giveItem = ItemHolder.get(giveItemCode);
+        }
         this.giveItemCount = giveItemCount;
     }
 
@@ -25,16 +32,16 @@ public class SingleObjActionStep {
         return text;
     }
 
-    public String getTakeItemCode() {
-        return takeItemCode;
+    public Item getTakeItem() {
+        return takeItem;
     }
 
     public int getTakeItemCount() {
         return takeItemCount;
     }
 
-    public String getGiveItemCode() {
-        return giveItemCode;
+    public Item getGiveItem() {
+        return giveItem;
     }
 
     public int getGiveItemCount() {

@@ -1,5 +1,7 @@
 package state.objects.logic;
 
+import character.Inventory;
+import character.item.Item;
 import game.screen.ScreenUtils;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Input;
@@ -42,10 +44,24 @@ public class BasePlotTrigger {
         }
 
         if (ScreenUtils.isShown(curStepIdx)) {
-            curStepIdx++;
-            if (curStepIdx == objActionSteps.size() - 1) {
-                movePlot();
-                generalPlotShifted = true;
+            boolean stepNext = true;
+
+            SingleObjActionStep soa = getObjActionSteps().get(curStepIdx);
+            final Item take = soa.getTakeItem();
+            if (take != null) {
+                if (Inventory.contains(take)) {
+                    Inventory.drop(take);
+                } else {
+                    stepNext = false;
+                }
+            }
+
+            if (stepNext) {
+                curStepIdx++;
+                if (curStepIdx == objActionSteps.size() - 1) {
+                    movePlot();
+                    generalPlotShifted = true;
+                }
             }
         }
 

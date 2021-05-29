@@ -1,6 +1,9 @@
 package character;
 
 import character.item.Item;
+import org.newdawn.slick.Animation;
+import org.newdawn.slick.Image;
+import org.newdawn.slick.SlickException;
 
 import java.util.HashMap;
 import java.util.HashSet;
@@ -18,8 +21,21 @@ public class Inventory {
     private static final Map<Item, Integer> invMap = new HashMap<>();
     private static final Set<String> invCodes = new HashSet<>();
 
-    public static void init() {
+    public static void init() throws SlickException {
         invCodes.addAll(invMap.keySet().stream().map(Item::getCode).collect(Collectors.toList()));
+        put(new Item("key", new Animation(Frames.get("brdPgnSit8"), 100)));
+        put(new Item("bird", new Animation(Frames.get("brdPgnSit8"), 100)));
+        put(new Item("key", new Animation(new Image[]{new Image("items/key/1.png")}, 100)));
+        put(new Item("flyer", new Animation(new Image[]{new Image("items/key/1.png")}, 100)));
+    }
+
+    public static Map<Item, Integer> get() {
+        rL.lock();
+        try {
+            return invMap;
+        } finally {
+            rL.unlock();
+        }
     }
 
     public static boolean contains(final String code) {
@@ -34,7 +50,7 @@ public class Inventory {
     public static boolean contains(final Item item) {
         rL.lock();
         try {
-            return invMap.containsKey(item);
+            return invMap.containsKey(item) && invCodes.contains(item.getCode());
         } finally {
             rL.unlock();
         }
@@ -49,6 +65,18 @@ public class Inventory {
                 invMap.put(item, 1);
             }
             invCodes.add(item.getCode());
+        } finally {
+            wL.unlock();
+        }
+    }
+
+    public static void drop(final Item item) {
+        wL.lock();
+        try {
+            if (invMap.containsKey(item)) {
+                invMap.remove(item);
+                invCodes.remove(item.getCode());
+            }
         } finally {
             wL.unlock();
         }

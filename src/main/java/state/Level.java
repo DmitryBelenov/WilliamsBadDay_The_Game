@@ -127,6 +127,14 @@ public class Level extends BasicGameState {
                 TextViewer.setShown();
             }
         }
+
+        if (gameContainer.getInput().isKeyDown(Input.KEY_I)) {
+            if (!TextViewer.isShowing()) {
+                TextViewer.setShowing();
+                ScreenUtils.showInventory(graphics, camera);
+                TextViewer.setShown();
+            }
+        }
     }
 
     @Override

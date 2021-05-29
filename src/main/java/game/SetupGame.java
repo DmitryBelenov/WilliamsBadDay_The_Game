@@ -1,11 +1,13 @@
 package game;
 
 import character.Frames;
+import character.Inventory;
 import character.XYPos;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.StateBasedGame;
+import plot.ItemHolder;
 import plot.Plot;
 import state.BaseState;
 import state.IntState;
@@ -26,6 +28,8 @@ public class SetupGame extends StateBasedGame {
     }
 
     private static void init() throws SlickException {
+        ItemHolder.init();
+        Inventory.init();
         Plot.init(new String[]{"dog", "exit"});
 
         if (Frames.RIGHT_WALK == null || Frames.LEFT_WALK == null) {
