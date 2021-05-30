@@ -1,8 +1,6 @@
 package character;
 
 import character.item.Item;
-import org.newdawn.slick.Animation;
-import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
 
 import java.util.HashMap;

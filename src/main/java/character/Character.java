@@ -64,16 +64,22 @@ public class Character {
             if (input.isKeyDown(Input.KEY_RIGHT)) {
                 if (level.getTileId((x / STEP) + 1, y / STEP, moveIdx) == 0) {
                     move.x += STEP;
-                }
-                if (pl_steps != null && !pl_steps.playing()) {
-                    pl_steps.play(1.4f, 0.8f);
+
+                    if (pl_steps != null && !pl_steps.playing()) {
+                        pl_steps.play(1.4f, 0.8f);
+                    }
+                } else {
+                    stay();
                 }
             } else if (input.isKeyDown(Input.KEY_LEFT)) {
                 if (level.getTileId((x / STEP) - 1, y / STEP, moveIdx) == 0) {
                     move.x -= STEP;
-                }
-                if (pl_steps != null && !pl_steps.playing()) {
-                    pl_steps.play(1.4f, 0.8f);
+
+                    if (pl_steps != null && !pl_steps.playing()) {
+                        pl_steps.play(1.4f, 0.8f);
+                    }
+                } else {
+                    stay();
                 }
             } else {
                 if (left) {
@@ -90,15 +96,26 @@ public class Character {
 
             if (x + move.x > (level.getTileWidth()) && x + move.x < ((level.getWidth() * level.getTileWidth()) - (4 * (level.getTileWidth())))) {
                 x += move.x / 4;
+            } else {
+                stay();
             }
 
             if (y + move.y > (level.getTileHeight()) && y + move.y < ((level.getHeight() * level.getTileHeight()) - (4 * (level.getTileHeight())))) {
                 y += move.y / 4;
+            } else {
+                stay();
             }
 
             // set collision block position
             coBlk.setX(x);
             coBlk.setY(y);
+    }
+
+    private void stay() {
+        animation = new Animation(Frames.LEFT_STAY, DRT);
+        if (pl_steps.playing()) {
+            pl_steps.stop();
+        }
     }
 
     public void render() {
