@@ -16,27 +16,33 @@ public class IntState extends BasicGameState {
     private final String lft_dwn;
     private final String rgt_up;
     private final String lft_up;
+    private final Image img;
     private int key;
     private int go_to_stage;
 
     public IntState(final int id, String cent, int key, int go_to_stage) throws SlickException {
-        this(id, cent, null, null, null, null, key, go_to_stage);
+        this(id, null, cent, null, null, null, null, key, go_to_stage);
     }
 
-    public IntState(final int id, String cent, String rgt_dwn, int key, int go_to_stage) throws SlickException {
-        this(id, cent, rgt_dwn, null, null, null, key, go_to_stage);
+    public IntState(final int id, final Image img, String rgt_dwn, int key, int go_to_stage) throws SlickException {
+        this(id, img, null, rgt_dwn, null, null, null, key, go_to_stage);
     }
 
-    public IntState(final int id, String cent, String rgt_dwn, String lft_dwn, String rgt_up, String lft_up, int key, int go_to_stage) throws SlickException {
-        this(id, cent, rgt_dwn, lft_dwn, rgt_up, lft_up);
+    public IntState(final int id, final Image img, String cent, String rgt_dwn, int key, int go_to_stage) throws SlickException {
+        this(id, img, cent, rgt_dwn, null, null, null, key, go_to_stage);
+    }
+
+    public IntState(final int id, final Image img, String cent, String rgt_dwn, String lft_dwn, String rgt_up, String lft_up, int key, int go_to_stage) throws SlickException {
+        this(id, img, cent, rgt_dwn, lft_dwn, rgt_up, lft_up);
         this.key = key;
         this.go_to_stage = go_to_stage;
 
         if (key == Input.KEY_ENTER && go_to_stage < 0) throw new SlickException("No stage ID go to (by ENTER)");
     }
 
-    public IntState(final int id, String cent, String rgt_dwn, String lft_dwn, String rgt_up, String lft_up) {
+    public IntState(final int id, final Image img, String cent, String rgt_dwn, String lft_dwn, String rgt_up, String lft_up) {
         this.id = id;
+        this.img = img;
         this.cent = cent;
         this.rgt_dwn = rgt_dwn;
         this.lft_dwn = lft_dwn;
@@ -57,6 +63,9 @@ public class IntState extends BasicGameState {
     @Override
     public void render(GameContainer gameContainer, StateBasedGame stateBasedGame, Graphics graphics) throws SlickException {
         graphics.setColor(Color.white);
+        if (img != null) {
+            graphics.drawImage(img, (float) GameParams.WIDTH / 4, (float) GameParams.HEIGHT / 3);
+        }
         if (cent != null) {
             graphics.drawString(cent, (float) GameParams.WIDTH / 3, (float) GameParams.HEIGHT / 3);
         }

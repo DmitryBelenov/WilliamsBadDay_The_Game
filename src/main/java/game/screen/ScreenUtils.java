@@ -61,7 +61,7 @@ public class ScreenUtils {
                 Item item = invEntry.getKey();
                 Integer count = invEntry.getValue();
                 gr.drawAnimation(item.getAnimation(), xN, yN);
-                gr.drawString(item.getCode() + " " + count, xN - 10, yN + 35);
+                gr.drawString(item.getCode() + (count > 1 ? " " + count : ""), xN - 10, yN + 35);
 
                 xN += 80;
             }

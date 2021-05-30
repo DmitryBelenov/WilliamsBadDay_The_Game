@@ -50,10 +50,29 @@ public class BasePlotTrigger {
             final Item take = soa.getTakeItem();
             if (take != null) {
                 if (Inventory.contains(take)) {
-                    Inventory.drop(take);
+                    int needCnt = soa.getTakeItemCount();
+                    if (needCnt > 1) {
+                        Integer haveCnt = Inventory.getCount(take);
+                        if (haveCnt < needCnt) {
+                            soa.setTakeItemCount(needCnt - haveCnt);
+                            stepNext = false;
+                            Inventory.drop(take);
+                        } else if (haveCnt == needCnt) {
+                            Inventory.drop(take);
+                        } else {
+                            Inventory.dropCnt(take, needCnt);
+                        }
+                    } else {
+                        Inventory.dropCnt(take, 1);
+                    }
                 } else {
                     stepNext = false;
                 }
+            }
+            final Item give = soa.getGiveItem();
+            if (give != null) {
+                Inventory.putCnt(give, soa.getGiveItemCount());
+                soa.removeGiveItem();
             }
 
             if (stepNext) {

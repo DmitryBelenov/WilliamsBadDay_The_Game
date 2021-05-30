@@ -23,16 +23,25 @@ public class Inventory {
 
     public static void init() throws SlickException {
         invCodes.addAll(invMap.keySet().stream().map(Item::getCode).collect(Collectors.toList()));
-        put(new Item("key", new Animation(Frames.get("brdPgnSit8"), 100)));
-        put(new Item("bird", new Animation(Frames.get("brdPgnSit8"), 100)));
-        put(new Item("key", new Animation(new Image[]{new Image("items/key/1.png")}, 100)));
-        put(new Item("flyer", new Animation(new Image[]{new Image("items/key/1.png")}, 100)));
+//        put(new Item("key", new Animation(Frames.get("brdPgnSit8"), 100)));
+//        put(new Item("bird", new Animation(Frames.get("brdPgnSit8"), 100)));
+//        put(new Item("pigeon", new Animation(new Image[]{new Image("items/key/1.png")}, 100)));
+//        put(new Item("flyer", new Animation(new Image[]{new Image("items/key/1.png")}, 100)));
     }
 
     public static Map<Item, Integer> get() {
         rL.lock();
         try {
             return invMap;
+        } finally {
+            rL.unlock();
+        }
+    }
+
+    public static Integer getCount(Item item) {
+        rL.lock();
+        try {
+            return invMap.get(item);
         } finally {
             rL.unlock();
         }
@@ -56,13 +65,13 @@ public class Inventory {
         }
     }
 
-    public static void put(final Item item) {
+    public static void putCnt(final Item item, final Integer putCnt) {
         wL.lock();
         try {
             if (invMap.containsKey(item)) {
-                invMap.put(item, invMap.get(item) + 1);
+                invMap.put(item, invMap.get(item) + putCnt);
             } else {
-                invMap.put(item, 1);
+                invMap.put(item, putCnt);
             }
             invCodes.add(item.getCode());
         } finally {
@@ -76,6 +85,22 @@ public class Inventory {
             if (invMap.containsKey(item)) {
                 invMap.remove(item);
                 invCodes.remove(item.getCode());
+            }
+        } finally {
+            wL.unlock();
+        }
+    }
+
+    public static void dropCnt(final Item item, final Integer cntToDrop) {
+        wL.lock();
+        try {
+            if (invMap.containsKey(item)) {
+                if (invMap.get(item) == 1) {
+                    invMap.remove(item);
+                    invCodes.remove(item.getCode());
+                } else {
+                    invMap.put(item, invMap.get(item) - cntToDrop);
+                }
             }
         } finally {
             wL.unlock();
