@@ -26,16 +26,14 @@ public class LevelObject {
     private final Animation objAnimation;
     private final Rectangle objCollShape;
     private final BasePlotTrigger objPlotTrigger;
-    private final Boolean isRightReentrant;
 
-    public LevelObject(String objName, int goToLvLId, XYPos position, Animation objAnimation, Rectangle objCollShape, BasePlotTrigger objPlotTrigger, Boolean isRightReentrant) {
+    public LevelObject(String objName, int goToLvLId, XYPos position, Animation objAnimation, Rectangle objCollShape, BasePlotTrigger objPlotTrigger) {
         this.objName = objName;
         this.goToLvLId = goToLvLId;
         this.position = position;
         this.objAnimation = objAnimation;
         this.objCollShape = objCollShape;
         this.objPlotTrigger = objPlotTrigger;
-        this.isRightReentrant = isRightReentrant;
     }
 
     public void renderObject(Graphics graphics, Rectangle chCoBl, GameContainer gc, Camera camera) {
@@ -86,10 +84,6 @@ public class LevelObject {
 
                 if (goToLvLId != -1 && gc.getInput().isKeyDown(Input.KEY_E)) {
                     sbg.enterState(goToLvLId, new FadeOutTransition(), new FadeInTransition());
-
-                    int movePlTo = isRightReentrant ? (int) objCollShape.getX() - 50 : (int) (objCollShape.getX() + objCollShape.getWidth()) + 50;
-                    // move player to reentrant position
-                    player.setX(movePlTo);
                 }
             }
         }

@@ -79,7 +79,6 @@ public class LevelObjectsHolder {
       float collShW = 0f;
       float collShH = 0f;
       int goToLvVId = -1;
-      Boolean isRightReentrant = null;
 
       final String[] valPairs = lineVal.split(";");
       for (final String pair : valPairs) {
@@ -104,8 +103,6 @@ public class LevelObjectsHolder {
             goToLvVId = Integer.parseInt(val);
          } else if (LinePairKey.valueOf(key) == LinePairKey.plStCode) {
             objPlotTrigger = new BasePlotTrigger(val);
-         } else if (LinePairKey.valueOf(key) == LinePairKey.reEnt) {
-            isRightReentrant = val.equals("right") || val.equals("center");
          } else if (LinePairKey.valueOf(key) == LinePairKey.act) {
             if (objPlotTrigger != null) {
                final List<SingleObjActionStep> actList = LevelObject.parseActionSteps(val);
@@ -120,13 +117,10 @@ public class LevelObjectsHolder {
       if (position.isZeroCoordinates())
          throw new SlickException("Object position not found");
 
-      if (isRightReentrant == null && goToLvVId != -1)
-         throw new SlickException("Object reentrant position for level exit not found");
-
       if (collShW != 0 && collShH != 0) {
          objCollShape = new Rectangle(position.getX(), position.getY(), collShW, collShH);
       }
 
-      return new LevelObject(objName, goToLvVId, position, objAnimation, objCollShape, objPlotTrigger, isRightReentrant);
+      return new LevelObject(objName, goToLvVId, position, objAnimation, objCollShape, objPlotTrigger);
    }
 }

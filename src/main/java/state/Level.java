@@ -96,7 +96,6 @@ public class Level extends BasicGameState {
         if (backMusicURI != null) {
             backMusic = new Music(backMusicURI);
             backMusic.setVolume(0.5f);
-            backMusic.loop();
         }
     }
 
@@ -154,7 +153,9 @@ public class Level extends BasicGameState {
     @Override
     public void leave(GameContainer container, StateBasedGame game) throws SlickException {
         super.leave(container, game);
-        backMusic.stop();
+        if (backMusic.playing()) {
+            backMusic.stop();
+        }
     }
 
     @Override

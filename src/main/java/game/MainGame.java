@@ -9,7 +9,7 @@ public class MainGame {
         AppGameContainer app = new AppGameContainer(new SetupGame("William's Bad Day"));
         app.setDisplayMode(GameParams.WIDTH, GameParams.HEIGHT, GameParams.IS_FULLSCREEN);
         if (GameParams.IS_TARGET_FR) {
-            app.setTargetFrameRate(60);
+            app.setTargetFrameRate(80);
         }
         app.setVSync(true);
         app.start();

@@ -24,7 +24,7 @@ public class GameParams {
     /**
      * Set target frame rate to 60 FPS
      * */
-    public static final boolean IS_TARGET_FR = false;
+    public static final boolean IS_TARGET_FR = true;
     /**
      * Set fullscreen display mode
      * */

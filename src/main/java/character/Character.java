@@ -11,7 +11,7 @@ public class Character {
     private boolean right, left;
 
     private Animation animation;
-    public static final int DRT = 65;
+    public static final int DRT = 70;
     private static final int STEP = 8; // px;
 
     public Sound pl_steps;
