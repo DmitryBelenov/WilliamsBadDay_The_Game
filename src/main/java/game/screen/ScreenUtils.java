@@ -3,11 +3,11 @@ package game.screen;
 import camera.Camera;
 import character.Inventory;
 import character.item.Item;
-import game.MainGame;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.geom.Rectangle;
 import params.GameParams;
+import state.objects.LevelObject.ActiveObj;
 
 import java.util.Map;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
@@ -22,7 +22,7 @@ public class ScreenUtils {
 
     public static void showTxt(String txt, Graphics gr, Camera camera) {
         float x = camera.getViewPort().getX() + 20;
-        float y = camera.getViewPort().getY() + (GameParams.HEIGHT - 80);
+        float y = camera.getViewPort().getY() + 20; // (GameParams.HEIGHT - 80)
         Rectangle txtArea = new Rectangle(x, y, GameParams.WIDTH - 40, 50);
         gr.setColor(Color.black);
         gr.fill(txtArea);
@@ -40,13 +40,14 @@ public class ScreenUtils {
             }
             TextViewer.setShown();
             ScreenUtils.setShown(idx);
+            ActiveObj.deactivate();
         });
         showTh.start();
     }
 
     public static void showInventory(Graphics gr, Camera camera) {
         float x = camera.getViewPort().getX() + 20;
-        float y = camera.getViewPort().getY() + (GameParams.HEIGHT - 80);
+        float y = camera.getViewPort().getY() + 20; //(GameParams.HEIGHT - 80)
         Rectangle txtArea = new Rectangle(x, y, GameParams.WIDTH - 40, 70);
         gr.setColor(Color.black);
         gr.fill(txtArea);

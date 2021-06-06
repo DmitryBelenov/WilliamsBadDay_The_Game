@@ -3,7 +3,6 @@ package state;
 import camera.Camera;
 import character.Frames;
 import character.XYPos;
-import game.MainGame;
 import game.screen.ScreenUtils;
 import game.screen.TextViewer;
 import org.newdawn.slick.*;
@@ -16,6 +15,7 @@ import params.GameParams;
 import plot.QuestMenu;
 import state.objects.LevelObject;
 import state.objects.LevelObjectsHolder;
+import state.objects.LevelObject.ActiveObj;
 
 public class Level extends BasicGameState {
     /**
@@ -151,18 +151,20 @@ public class Level extends BasicGameState {
     }
 
     @Override
-    public void leave(GameContainer container, StateBasedGame game) throws SlickException {
-        super.leave(container, game);
-        if (backMusic.playing()) {
-            backMusic.stop();
+    public void enter(GameContainer container, StateBasedGame game) throws SlickException {
+        super.enter(container, game);
+
+        if (!backMusic.playing()) {
+            backMusic.loop();
         }
     }
 
     @Override
-    public void enter(GameContainer container, StateBasedGame game) throws SlickException {
-        super.enter(container, game);
-        if (!backMusic.playing()) {
-            backMusic.loop();
+    public void leave(GameContainer container, StateBasedGame game) throws SlickException {
+        super.leave(container, game);
+
+        if (backMusic.playing()) {
+            backMusic.stop();
         }
     }
 }

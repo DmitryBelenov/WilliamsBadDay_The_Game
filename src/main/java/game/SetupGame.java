@@ -22,12 +22,12 @@ public class SetupGame extends StateBasedGame {
     public void initStatesList(GameContainer gameContainer) throws SlickException {
         init();
 
-        this.addState(new IntState(0, new Image("img/logo/logo.png"), null, "Press ENTER", Input.KEY_ENTER, 1));
-        this.addState(new BaseState(1, "tiles/level/LEVEL_1.tmx", "tiles/level/LEVEL_1_FRONT.tmx", "sounds/level/Countryside.wav", new XYPos(115, 390))); //space-ambience.wav
-
-        this.addState(new IntState(2, null,"Strange ground hole", "Press ENTER", Input.KEY_ENTER, 3));
-        this.addState(new BaseState(3, "tiles/level/LEVEL_2.tmx", null, "sounds/level/space-ambience.wav", new XYPos(70, 440)));
-
+//        this.addState(new IntState(0, new Image("img/logo/logo.png"), null, "Press ENTER", Input.KEY_ENTER, 1));
+//        this.addState(new BaseState(1, "tiles/level/LEVEL_1.tmx", "tiles/level/LEVEL_1_FRONT.tmx", "sounds/level/Countryside.wav", new XYPos(115, 390))); //space-ambience.wav
+//
+//        this.addState(new IntState(2, null,"Strange ground hole", "Press ENTER", Input.KEY_ENTER, 3));
+//        this.addState(new BaseState(3, "tiles/level/LEVEL_2.tmx", null, "sounds/level/space-ambience.wav", new XYPos(70, 440)));
+//
         this.addState(new IntState(4, null,"The books..", "Press ENTER", Input.KEY_ENTER, 5));
         this.addState(new BaseState(5, "tiles/level/LEVEL_3.tmx", null, "sounds/level/space-ambience.wav", new XYPos(250, 512)));
     }
@@ -35,7 +35,7 @@ public class SetupGame extends StateBasedGame {
     private static void init() throws SlickException {
         ItemHolder.init();
         Inventory.init();
-        Plot.init(new String[]{"exit"});
+        Plot.init(new String[]{"start", "prisonDoor", "elWires"});
 
         if (Frames.RIGHT_WALK == null || Frames.LEFT_WALK == null) {
             throw new SlickException("Character animation not initialized");

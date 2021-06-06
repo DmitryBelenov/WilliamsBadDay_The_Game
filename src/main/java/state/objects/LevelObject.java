@@ -17,6 +17,7 @@ import state.objects.logic.SingleObjActionStep;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
+import java.util.concurrent.locks.ReentrantReadWriteLock;
 
 public class LevelObject {
 
@@ -58,6 +59,7 @@ public class LevelObject {
             graphics.fill(objCollShape);
             if (chCoBl.intersects(objCollShape) && cur != null) {
                 if (gc.getInput().isKeyDown(Input.KEY_E) && !TextViewer.isShowing()) {
+                    ActiveObj.activate(objName);
                     ScreenUtils.showStart();
                     TextViewer.setShowing();
                     ScreenUtils.setShowDuration(idx);
@@ -66,7 +68,7 @@ public class LevelObject {
             }
         }
 
-        if (cur != null) {
+        if (cur != null && ActiveObj.isActive(objName)) {
             if (TextViewer.isShowing()) {
                 ScreenUtils.showTxt(cur.getText(), gc.getGraphics(), camera);
             }
@@ -115,5 +117,44 @@ public class LevelObject {
 
     public BasePlotTrigger getObjPlotTrigger() {
         return objPlotTrigger;
+    }
+
+    public String getObjName() {
+        return objName;
+    }
+
+    public static class ActiveObj {
+        private static final ReentrantReadWriteLock rwL = new ReentrantReadWriteLock();
+        private static final ReentrantReadWriteLock.ReadLock rL = rwL.readLock();
+        private static final ReentrantReadWriteLock.WriteLock wL = rwL.writeLock();
+
+        private static String activeObject;
+
+        public static void activate(final String name) {
+            wL.lock();
+            try {
+                activeObject = name;
+            } finally {
+                wL.unlock();
+            }
+        }
+
+        public static void deactivate() {
+            wL.lock();
+            try {
+                activeObject = null;
+            } finally {
+                wL.unlock();
+            }
+        }
+
+        public static boolean isActive(final String name) {
+            rL.lock();
+            try {
+                return activeObject != null && activeObject.equals(name);
+            } finally {
+                rL.unlock();
+            }
+        }
     }
 }

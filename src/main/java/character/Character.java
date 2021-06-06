@@ -11,10 +11,11 @@ public class Character {
     private boolean right, left;
 
     private Animation animation;
-    public static final int DRT = 70;
+    public static final int DRT = 65;
     private static final int STEP = 8; // px;
 
     public Sound pl_steps;
+    private static final float STEP_VOL = 0.3f;
 
     public Character(int x, int y, Animation animation) throws SlickException {
         this.x = x;
@@ -66,20 +67,20 @@ public class Character {
                     move.x += STEP;
 
                     if (pl_steps != null && !pl_steps.playing()) {
-                        pl_steps.play(1.4f, 0.8f);
+                        pl_steps.play(1.4f, STEP_VOL);
                     }
                 } else {
-                    stay();
+                    stay(Frames.RIGHT_STAY);
                 }
             } else if (input.isKeyDown(Input.KEY_LEFT)) {
                 if (level.getTileId((x / STEP) - 1, y / STEP, moveIdx) == 0) {
                     move.x -= STEP;
 
                     if (pl_steps != null && !pl_steps.playing()) {
-                        pl_steps.play(1.4f, 0.8f);
+                        pl_steps.play(1.4f, STEP_VOL);
                     }
                 } else {
-                    stay();
+                    stay(Frames.LEFT_STAY);
                 }
             } else {
                 if (left) {
@@ -97,13 +98,13 @@ public class Character {
             if (x + move.x > (level.getTileWidth()) && x + move.x < ((level.getWidth() * level.getTileWidth()) - (4 * (level.getTileWidth())))) {
                 x += move.x / 4;
             } else {
-                stay();
+                stay(Frames.LEFT_STAY);
             }
 
             if (y + move.y > (level.getTileHeight()) && y + move.y < ((level.getHeight() * level.getTileHeight()) - (4 * (level.getTileHeight())))) {
                 y += move.y / 4;
             } else {
-                stay();
+                stay(Frames.LEFT_STAY);
             }
 
             // set collision block position
@@ -111,8 +112,8 @@ public class Character {
             coBlk.setY(y);
     }
 
-    private void stay() {
-        animation = new Animation(Frames.LEFT_STAY, DRT);
+    private void stay(Image[] stayFrames) {
+        animation = new Animation(stayFrames, DRT);
         if (pl_steps.playing()) {
             pl_steps.stop();
         }

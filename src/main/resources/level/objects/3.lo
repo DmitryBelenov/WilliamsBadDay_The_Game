@@ -1,3 +1,3 @@
 lvlCode:GroundWhole
-lo:nm=exitToLvL1;posX=0;posY=280;collShW=96;collShH=320;goToID=1;reEnt=left;plStCode=exit
-lo:nm=exitToLvL5;posX=560;posY=240;collShW=480;collShH=400;goToID=4;reEnt=right;plStCode=exit
+lo:nm=exitToLvL1;posX=0;posY=280;collShW=96;collShH=320;goToID=1;plStCode=start
+lo:nm=exitToLvL5;posX=560;posY=240;collShW=480;collShH=400;goToID=4;plStCode=start

@@ -33,7 +33,7 @@ public class LevelObjectsHolder {
    }
 
    private enum LinePairKey {
-      nm, posX, posY, anim, animDur, collShW, collShH, plStCode, goToID, reEnt, act
+      nm, posX, posY, anim, animDur, collShW, collShH, plStCode, goToID, act
    }
 
    public static LevelObjectsHolder read(final String lvObjDescriptorFile) throws SlickException {
