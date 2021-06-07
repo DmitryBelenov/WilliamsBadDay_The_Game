@@ -1,0 +1,3 @@
+lvlCode:Switchboard room
+lo:nm=exitToLvL7;posX=8;posY=480;collShW=120;collShH=224;goToID=7;plStCode=prisonDoor
+lo:nm=RobotMendor;posX=2160;posY=568;animDur=100;anim=roboMendor9
