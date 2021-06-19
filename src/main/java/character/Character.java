@@ -108,7 +108,7 @@ public class Character {
             }
 
             // set collision block position
-            coBlk.setX(x);
+            coBlk.setX(x + 12);
             coBlk.setY(y);
     }
 

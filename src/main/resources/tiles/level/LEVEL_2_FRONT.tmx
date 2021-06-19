@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.5" tiledversion="1.6.0" orientation="orthogonal" renderorder="right-down" width="200" height="90" tilewidth="8" tileheight="8" infinite="0" nextlayerid="2" nextobjectid="1">
+ <tileset firstgid="1" name="glassNFuture" tilewidth="8" tileheight="8" tilecount="4096" columns="64">
+  <image source="Interior-Furniture.png" width="512" height="512"/>
+ </tileset>
+ <tileset firstgid="4097" source="New.tsx"/>
+ <layer id="1" name="FRONT" width="200" height="90">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAACu3ba2rbQBSA0UI20D9dgZdu7yyQdZRAQ40YaV53NHqcA4JC5STQ++WOnPTP718AAAAAAAAAAAAA3MTj4/8Fd/E+97UXnF3P/GuEqxrdhUY4o5J5/tIHN1Mzz9F9aIQji26jpx84ktr5jepj6x44gpY2IveHRjiy2rmNmPuf61lwH8w0so/SPfN8ux6LP2uEmUb1UXLvz/54blz6YJbc9/7UvObmueXerfvsEGbJfd/XB3d2hj6csZhlq4/emf+5t+T+kns0wt5SbeTmdVQfJTtEI+xp2UVJA/rgDl4NbYzqo+aMpRH2sOyj5GzV2sfjY31X2SEc0Ssxt1+ZOa3ZBy37w3M6R7HVR8TuSM187/7QB3vZs4+aZ3Q/C+EIln2UfA/XB3eQauNI+2Pt/vevFUZJ9TF7f9ghHMUrM5+5+dUHV/XdRm0fj8zf64OryLVxhv3x1AeDnKWPrT32fb00wgCz+ng0vGbrPn0wQqqPkvdW99gf+mC2XB8ls6sPrkofkLb23u6R+ij9PPogWs+zR0sfI3eIPoimD0grOVudrQ+NEOV7lj4zbZT0UdNGbX81fXz+u6DXrN0R0YczFqOV/My8tI+e89WIPjRCr6v2YYfQa62NWX04Y3Ekd+hDI7Qo+b9QpTMb9Xze2ocdQrSo3dHaR2rG9cFRlPZRM68z+9AIkaLPVvrgSkb0UdPIiD7WXu85nRqR8x7dR8vntEOIFHlemtGHMxYjjTpb7dXHpx3CQEfvwxmLWUb83CPy+Xp0HxphS+nuOHMfdggtan6nRB/cTc3ZqmdGI/rIfZye12qEpdo2zt6HHUKNmnPVGfroaUQfLG3tj+Ws5eZSH1zJ1nN5at562og4F0V9HWsfx/u8vCtpo/Zqne2aPuwQRivdHZFtRPYR0Yg+SCk5R4zqIzWXLW30ntnWXuOMRe2/f9RzQ+RzSE+3ufv1QY0Ru2SvNvTB3iI62bOPZ8FrIVLkbJa01dJE7oLRRszt6Atm0wDkaQLytAFlzDgAAAApfwHbPnZ7QBkBAA==
+  </data>
+ </layer>
+</map>

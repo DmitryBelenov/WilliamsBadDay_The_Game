@@ -1,0 +1,4 @@
+lvlCode:BrainLaboratory
+lo:nm=exitToLvL9;posX=8;posY=608;collShW=24;collShH=56;goToID=9;plStCode=start
+lo:nm=exitToLvL13;posX=1336;posY=480;collShW=120;collShH=176;goToID=13;plStCode=test
+lo:nm=exitToLvL15;posX=2496;posY=480;collShW=120;collShH=176;goToID=15;plStCode=test
