@@ -1,4 +1,4 @@
 lvlCode:Switchboard room
 lo:nm=exitToLvL7;posX=8;posY=312;collShW=120;collShH=224;goToID=7;plStCode=prisonDoor
-lo:nm=exitToLvL11;posX=2986;posY=352;collShW=24;collShH=184;goToID=10;plStCode=start
+lo:nm=exitToLvL11;posX=2986;posY=352;collShW=24;collShH=184;goToID=10;plStCode=prisonDoor
 lo:nm=RobotMendor;posX=2160;posY=400;animDur=100;anim=roboMendor9

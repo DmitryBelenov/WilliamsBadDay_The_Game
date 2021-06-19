@@ -20,9 +20,9 @@ public class GameParams {
     /**
      * Debug mode
      * */
-    public static final boolean IS_DEBUG_MODE = true;
+    public static final boolean IS_DEBUG_MODE = false;
     /**
-     * Set target frame rate to 60 FPS
+     * Set target frame rate to 80 FPS
      * */
     public static final boolean IS_TARGET_FR = true;
     /**

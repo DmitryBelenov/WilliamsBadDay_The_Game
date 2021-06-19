@@ -22,17 +22,17 @@ public class SetupGame extends StateBasedGame {
     public void initStatesList(GameContainer gameContainer) throws SlickException {
         init();
 
-//        this.addState(new IntState(0, new Image("img/logo/logo.png"), null, "Press ENTER", Input.KEY_ENTER, 1));
-//        this.addState(new BaseState(1, "tiles/level/LEVEL_1.tmx", "tiles/level/LEVEL_1_FRONT.tmx", "sounds/level/Countryside.wav", new XYPos(115, 390))); //space-ambience.wav
-//
-//        this.addState(new IntState(2, null,"Strange ground hole", "Press ENTER", Input.KEY_ENTER, 3));
-//        this.addState(new BaseState(3, "tiles/level/LEVEL_2.tmx", "tiles/level/LEVEL_2_FRONT.tmx","sounds/level/space-ambience.wav", new XYPos(70, 440)));
-//
-//        this.addState(new IntState(4, null,"The books..", "Press ENTER", Input.KEY_ENTER, 5));
-//        this.addState(new BaseState(5, "tiles/level/LEVEL_3.tmx", null, "sounds/level/space-ambience.wav", new XYPos(250, 512)));
-//
-//        this.addState(new IntState(6, null,"Space prison", "Press ENTER", Input.KEY_ENTER, 7));
-//        this.addState(new BaseState(7, "tiles/level/LEVEL_4.tmx", null, "sounds/level/space-ambience.wav", new XYPos(64, 512)));
+        this.addState(new IntState(0, new Image("img/logo/logo.png"), null, "Press ENTER", Input.KEY_ENTER, 1));
+        this.addState(new BaseState(1, "tiles/level/LEVEL_1.tmx", "tiles/level/LEVEL_1_FRONT.tmx", "sounds/level/Countryside.wav", new XYPos(115, 390))); //space-ambience.wav
+
+        this.addState(new IntState(2, null,"Strange ground hole", "Press ENTER", Input.KEY_ENTER, 3));
+        this.addState(new BaseState(3, "tiles/level/LEVEL_2.tmx", "tiles/level/LEVEL_2_FRONT.tmx","sounds/level/space-ambience.wav", new XYPos(70, 440)));
+
+        this.addState(new IntState(4, null,"The books..", "Press ENTER", Input.KEY_ENTER, 5));
+        this.addState(new BaseState(5, "tiles/level/LEVEL_3.tmx", null, "sounds/level/space-ambience.wav", new XYPos(250, 512)));
+
+        this.addState(new IntState(6, null,"Space prison", "Press ENTER", Input.KEY_ENTER, 7));
+        this.addState(new BaseState(7, "tiles/level/LEVEL_4.tmx", null, "sounds/level/space-ambience.wav", new XYPos(64, 512)));
 //
         this.addState(new IntState(8, null,"Switchboard room", "Press ENTER", Input.KEY_ENTER, 9));
         this.addState(new BaseState(9, "tiles/level/LEVEL_5.tmx", "tiles/level/LEVEL_5_FRONT.tmx", "sounds/level/space-ambience.wav", new XYPos(32, 368)));
