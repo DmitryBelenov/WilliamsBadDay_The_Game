@@ -44,7 +44,7 @@ public class SetupGame extends StateBasedGame {
     private static void init() throws SlickException {
         ItemHolder.init();
         Inventory.init();
-        Plot.init(new String[]{"start", "prisonDoor", "elWires"});
+        Plot.init(new String[]{"start", "prisonDoor", "elWires", "Screwdriver"});
 
         if (Frames.RIGHT_WALK == null || Frames.LEFT_WALK == null) {
             throw new SlickException("Character animation not initialized");

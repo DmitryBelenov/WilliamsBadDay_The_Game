@@ -27,7 +27,7 @@ public class BasePlotTrigger {
 
     public boolean shift(GameContainer gc) {
         if (!plotStartCode.equals(Plot.curCode())) {
-            return false;
+            return Plot.isPassed(plotStartCode);
         }
 
         boolean isNextStep = false;

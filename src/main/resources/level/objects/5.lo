@@ -1,4 +1,4 @@
 lvlCode:SpacePrison
 --lo:nm=DoorNWires;posX=816;posY=440;collShW=168;collShH=272;plStCode=start;act=s1-Door is closed.. I can't get out,s2-I see the wires over the door,s3-The wires are too high,s4-I need something to reach the wires
 lo:nm=Books;posX=8;posY=416;collShW=240;collShH=288;plStCode=start;act=s1-A lot of books..,s2-Maybe I can use it-NA-0-books-1,s3-Took a stack of books
-lo:nm=exitToLvL6;posX=840;posY=456;collShW=144;collShH=304;goToID=6;plStCode=prisonDoor
+lo:nm=exitToLvL6;posX=840;posY=456;collShW=144;collShH=304;goToID=6;plStCode=prisonDoor;act=s1-Hmm electric wires under the door-books-1-NA-0,s2-OK. I cut the wires. Door is open

@@ -1,3 +1,3 @@
 lvlCode:SpacePrisonCorridor
-lo:nm=exitToLvL9;posX=2800;posY=432;collShW=120;collShH=208;goToID=9;plStCode=prisonDoor
-lo:nm=exitToLvL5;posX=8;posY=456;collShW=120;collShH=264;goToID=5;plStCode=prisonDoor
+lo:nm=exitToLvL9;posX=2800;posY=432;collShW=120;collShH=208;goToID=9;plStCode=elWires
+lo:nm=exitToLvL5;posX=8;posY=456;collShW=120;collShH=264;goToID=5;plStCode=elWires

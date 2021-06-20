@@ -1,5 +1,7 @@
 package plot;
 
+import java.util.HashSet;
+import java.util.Set;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
 import java.util.concurrent.locks.ReentrantReadWriteLock.*;
 
@@ -11,11 +13,13 @@ public class Plot {
     public static volatile String curCode;
 
     private static String[] plot;
+    private static Set<String> passCodes = new HashSet<>();
     private static int idx;
 
     public static synchronized void init(final String[] plotArr) {
         plot = plotArr;
         curCode = plot[idx];
+        passCodes.add(curCode);
     }
 
     public static void shiftFw() {
@@ -26,6 +30,7 @@ public class Plot {
             }
             idx++;
             curCode = plot[idx];
+            passCodes.add(curCode);
         } finally {
             wL.unlock();
         }
@@ -48,6 +53,15 @@ public class Plot {
         rL.lock();
         try {
             return curCode;
+        } finally {
+            rL.unlock();
+        }
+    }
+
+    public static boolean isPassed(final String code) {
+        rL.lock();
+        try {
+            return passCodes.contains(code);
         } finally {
             rL.unlock();
         }
