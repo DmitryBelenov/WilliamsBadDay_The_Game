@@ -21,10 +21,6 @@ public class Inventory {
 
     public static void init() throws SlickException {
         invCodes.addAll(invMap.keySet().stream().map(Item::getCode).collect(Collectors.toList()));
-//        put(new Item("key", new Animation(Frames.get("brdPgnSit8"), 100)));
-//        put(new Item("bird", new Animation(Frames.get("brdPgnSit8"), 100)));
-//        put(new Item("pigeon", new Animation(new Image[]{new Image("items/key/1.png")}, 100)));
-//        put(new Item("flyer", new Animation(new Image[]{new Image("items/key/1.png")}, 100)));
     }
 
     public static Map<Item, Integer> get() {

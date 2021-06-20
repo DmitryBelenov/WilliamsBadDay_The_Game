@@ -33,7 +33,7 @@ public class SetupGame extends StateBasedGame {
 
         this.addState(new IntState(6, null,"Space prison", "Press ENTER", Input.KEY_ENTER, 7));
         this.addState(new BaseState(7, "tiles/level/LEVEL_4.tmx", null, "sounds/level/space-ambience.wav", new XYPos(64, 512)));
-//
+
         this.addState(new IntState(8, null,"Switchboard room", "Press ENTER", Input.KEY_ENTER, 9));
         this.addState(new BaseState(9, "tiles/level/LEVEL_5.tmx", "tiles/level/LEVEL_5_FRONT.tmx", "sounds/level/space-ambience.wav", new XYPos(32, 368)));
 

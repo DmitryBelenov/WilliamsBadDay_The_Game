@@ -33,7 +33,7 @@ public class LevelObjectsHolder {
    }
 
    private enum LinePairKey {
-      nm, posX, posY, anim, animDur, collShW, collShH, plStCode, goToID, act
+      nm, posX, posY, anim, animAct, animDur, collShW, collShH, plStCode, goToID, act
    }
 
    public static LevelObjectsHolder read(final String lvObjDescriptorFile) throws SlickException {
@@ -72,6 +72,7 @@ public class LevelObjectsHolder {
       String objName = null;
       XYPos position = new XYPos();
       Animation objAnimation = null;
+      Animation objActAnimation = null;
       Rectangle objCollShape = null;
       BasePlotTrigger objPlotTrigger = null;
 
@@ -95,6 +96,8 @@ public class LevelObjectsHolder {
             frameDur = Integer.parseInt(val);
          } else if (LinePairKey.valueOf(key) == LinePairKey.anim) {
             objAnimation = new Animation(Frames.get(val), frameDur);
+         } else if (LinePairKey.valueOf(key) == LinePairKey.animAct) {
+            objActAnimation = new Animation(Frames.get(val), frameDur);
          } else if (LinePairKey.valueOf(key) == LinePairKey.collShW) {
             collShW = Float.parseFloat(val);
          } else if (LinePairKey.valueOf(key) == LinePairKey.collShH) {
@@ -121,6 +124,6 @@ public class LevelObjectsHolder {
          objCollShape = new Rectangle(position.getX(), position.getY(), collShW, collShH);
       }
 
-      return new LevelObject(objName, goToLvVId, position, objAnimation, objCollShape, objPlotTrigger);
+      return new LevelObject(objName, goToLvVId, position, objAnimation, objActAnimation, objCollShape, objPlotTrigger);
    }
 }

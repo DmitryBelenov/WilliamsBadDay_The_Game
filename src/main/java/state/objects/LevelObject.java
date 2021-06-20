@@ -25,21 +25,29 @@ public class LevelObject {
     private final int goToLvLId;
     private final XYPos position;
     private final Animation objAnimation;
+    private final Animation objActAnimation;
     private final Rectangle objCollShape;
     private final BasePlotTrigger objPlotTrigger;
 
-    public LevelObject(String objName, int goToLvLId, XYPos position, Animation objAnimation, Rectangle objCollShape, BasePlotTrigger objPlotTrigger) {
+    public LevelObject(String objName, int goToLvLId, XYPos position, Animation objAnimation, Animation objActAnimation, Rectangle objCollShape, BasePlotTrigger objPlotTrigger) {
         this.objName = objName;
         this.goToLvLId = goToLvLId;
         this.position = position;
         this.objAnimation = objAnimation;
+        this.objActAnimation = objActAnimation;
         this.objCollShape = objCollShape;
         this.objPlotTrigger = objPlotTrigger;
     }
 
     public void renderObject(Graphics graphics, Rectangle chCoBl, GameContainer gc, Camera camera) {
-        if (objAnimation != null) {
-            objAnimation.draw(position.getX(), position.getY());
+        if (ActiveObj.isActive(objName)) {
+            if (objActAnimation != null) {
+                objActAnimation.draw(position.getX(), position.getY());
+            }
+        } else {
+            if (objAnimation != null) {
+                objAnimation.draw(position.getX(), position.getY());
+            }
         }
 
         List<SingleObjActionStep> aSList;

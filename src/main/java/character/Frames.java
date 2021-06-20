@@ -65,6 +65,7 @@ public class Frames {
             OBJ_SPRITE_MAP.put("corgi24", SPRITES.get("sprites/dog/corgi/staying/30"));
             OBJ_SPRITE_MAP.put("firePlHome12", SPRITES.get("sprites/fireplace/home/11"));
             OBJ_SPRITE_MAP.put("roboMendor9", SPRITES.get("sprites/robot/mendor/9"));
+            OBJ_SPRITE_MAP.put("roboMendorAct9", SPRITES.get("sprites/robot/mendorAct/9"));
 
         } catch (SlickException se) {
             System.out.println(se.getMessage());
